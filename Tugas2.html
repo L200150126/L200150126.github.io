@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      #map {
+        height: 100%;
+      }      
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+  <center><h3>..:: L200150126 - Tugas 2::..</h3>
+    <h3>Lokasi McDonald's di pulau Jawa <h3></center>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 3,
+          center: {lat: -28.024, lng: 140.887}
+        });
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		
+        var markers = locations.map(function(location, i) {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length]
+          });
+        });
+
+        var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      }
+      var locations = [
+        {lat: -7.5702173, lng: 110.752923},
+        {lat: -7.0611232, lng: 110.3432487},
+        {lat: -7.5984022, lng: 110.7456026},
+        {lat: -7.0084475, lng: 110.3949301},
+        {lat: -7.0060483, lng: 110.3621362},
+        {lat: -6.9865068, lng: 110.3442492},
+        {lat: -6.9888412, lng: 110.3243138},
+        {lat: -7.815651,  lng: 111.9488145},
+        {lat: -6.8689317, lng: 109.0586255},
+        {lat: -7.9469117, lng: 112.5426344},
+        {lat: -7.1587532, lng: 112.5481922},
+        {lat: -7.9568995, lng: 112.5487163},
+        {lat: -7.9746791, lng: 112.5594674},
+        {lat: -7.1717211, lng: 112.5837039},
+        {lat: -7.3099674, lng: 112.6093915},
+        {lat: -7.3565324, lng: 112.6229075},
+        {lat: -7.4492281, lng: 112.6338311},
+        {lat: -7.288729,  lng: 112.6364979},
+        {lat: -7.3957705, lng: 112.6579817},
+        {lat: -7.3650948, lng: 112.6585898},
+		
+		{lat: -7.2821875, lng: 112.6706802},
+		{lat: -7.2642239, lng: 112.6714065},
+		{lat: -7.2654359, lng: 112.6791782},
+		{lat: -7.3690132, lng: 112.6938969},
+		{lat: -7.2794205, lng: 112.6952832},
+		{lat: -7.331135,  lng: 112.7057174},
+		{lat: -7.2667659, lng: 112.726364},
+		{lat: -6.7115102, lng: 108.485595},
+		{lat: -6.9894353, lng: 110.3541593},
+		{lat: -7.2882433, lng: 112.6088332},
+		{lat: -7.5665374, lng: 110.7374724},
+		{lat: -7.7832149, lng: 110.3016266},
+		{lat: -7.7624553, lng: 110.3095888},
+		{lat: -7.7829437, lng: 110.3369616},
+		{lat: -7.7928532, lng: 110.2959604},
+		{lat: -7.9808485, lng: 112.5606563},
+		{lat: -6.3887777, lng: 106.7566136},
+		{lat: -6.9389186, lng: 107.5551679},
+		{lat: -6.2326306, lng: 106.8953576},
+		
+		{lat: -6.3546018, lng: 106.7743532},
+		{lat: -7.7824912, lng: 110.3086217},
+		{lat: -6.8849368, lng: 107.5434842},
+		{lat: -6.2276427, lng: 106.927634},
+		{lat: -6.1912143, lng: 106.9062888},
+		{lat: -6.9061186, lng: 107.5271926},
+		{lat: -6.375665,  lng: 106.8450966},
+		{lat: -6.3223819, lng: 106.7134616},
+		{lat: -6.2682246, lng: 106.8412645},
+		{lat: -6.3113321, lng: 106.8541052},
+		{lat: -6.4831458, lng: 106.7482576},
+		{lat: -6.9078809, lng: 107.5408425},
+		{lat: -7.9842399, lng: 112.5619613},
+		{lat: -6.563969,  lng: 106.6931462},
+		{lat: -6.2778935, lng: 106.7278224},
+		{lat: -7.3314363, lng: 108.1492507},
+		{lat: -6.3704144, lng: 106.8267943},
+		{lat: -6.2994166, lng: 106.5943527},
+		{lat: -6.2206433, lng: 106.7624438},
+		
+		{lat: -6.191425,  lng: 106.7728363},
+		{lat: -6.1993605, lng: 106.699374},
+		{lat: -6.1734042, lng: 106.7410371},
+		{lat: -6.1607215, lng: 106.7497133},
+		{lat: -6.2801537, lng: 106.5920902},
+		{lat: -7.3614466, lng: 112.6245114},
+		{lat: -6.1467774, lng: 106.8263768},
+		{lat: -6.1873689, lng: 106.7534959},
+		{lat: -6.187374,  lng: 106.6679252},
+		{lat: -6.2573843, lng: 106.744485 },
+		{lat: -6.2444194, lng: 106.5797774},
+		{lat: -6.2321369, lng: 106.7755845}
+		
+      ]
+    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ5PESlZdVmLrdtYuHMn_s9kDAJEk6w7M&callback=initMap">
+    </script>
+  </body>
+</html>
