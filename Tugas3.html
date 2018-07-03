@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+  <!-- disini lokasi style atau script-->
+  <style>
+  	 #map {
+        height: 95%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 95%;
+        margin: 0;
+        padding: 0;
+      }
+ </style>
+
+
+
+</head>
+<body>
+	<h2>Gempa Bumi Signifikan, 30 Hari Terakhir</h2>
+  <div id="map"></div>
+
+  	<script> 
+      var map
+  		function initMap() {
+  			map = new google.maps.Map(  			
+  				document.getElementById('map'), 
+  				{
+          			zoom: 3,
+                center: new google.maps.LatLng(2.8,-187.3),
+                mapTypeId: 'terrain'
+        		}
+        	);
+		    //import geojson
+        var script = document.createElement('script');
+        script.src = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojsonp';
+        document.getElementsByTagName('head')[0].appendChild(script);
+      }  //end blok InitMap
+/*
+      function eqfeed_callback(results) {
+        var heatmapData = [];
+        for (var i = 0; i < results.features.length; i++) {
+          var coords = results.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[1], coords[0]);
+          heatmapData.push(latLng);
+        }
+        //debug
+        console.log(coords);
+        console.log(latLng);
+        //
+        var heatmap = new google.maps.visualization.HeatmapLayer({
+          data: heatmapData,
+          dissipating: false,
+          map: map
+        });
+      }
+*/
+function eqfeed_callback(results) {
+    var heatmapData = [];
+    for (var i = 0; i<results.features.length; i++) {
+      var coords = results.features[i].geometry.coordinates;
+      var latLng = new google.maps.LatLng(coords[1], coords[0]);
+      var magnitude = results.features[i].properties.mag;
+      var weightedLoc = {
+        location: latLng,
+        weight: Math.pow(3, magnitude)
+      };
+      heatmapData.push(weightedLoc);
+    }
+    var heatmap = new google.maps.visualization.HeatmapLayer({
+      data: heatmapData,
+      dissipating: false,
+      map: map
+    });
+  }
+  	</script>
+
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4RxFm0f4wYfTliYk4N66u1-HyYR6iBDY&libraries=visualization&callback=initMap">
+    </script>
+
+</body>
+</html>
